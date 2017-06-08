@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>rollup</title>
+  </head>
+  <body>
+    <input type="text" id="plainPicker">
+    <script src="bundle.js"></script>
+    <script>
+    var picker2months = new Pikaday({
+    numberOfMonths: 2,
+    field: document.getElementById('plainPicker'),
+    firstDay: 1,
+    minDate: new Date(),
+    // maxDate: new Date(2020, 12, 31),
+    // yearRange: [2000, 2020],
+    onSelect: function(date) { // 'YYYY/MM/DD'
+      var year = date.getFullYear(),
+          month = date.getMonth() + 1,
+          day = date.getDate(),
+          formattedDate = [
+            year,
+            month < 10 ? '0' + month : month,
+            day < 10 ? '0' + day : day
+          ].join('/')
+      document.getElementById('plainPicker').value = formattedDate
+    },
+  });
+    </script>
+  </body>
+</html>
